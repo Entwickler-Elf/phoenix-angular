@@ -35,6 +35,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/phoenix-v1-angular:sha-${{ github.sha }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/phoenix-v1-angular:${{ github.ref_name }}
-            ${{ github.ref == 'refs/heads/main' && format('{0}/phoenix-v1-angular:latest', secrets.DOCKERHUB_USERNAME) || '' }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/phoenix-angular:sha-${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/phoenix-angular:${{ github.ref_name }}
+            ${{ github.ref == 'refs/heads/main' && format('{0}/phoenix-angular:latest', secrets.DOCKERHUB_USERNAME) || '' }}
