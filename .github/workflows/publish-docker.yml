@@ -38,8 +38,7 @@ jobs:
           push: true
           tags: |
             coycatz/phoenix-angular:latest
-            coycatz/phoenix-angular:${{ steps.vars.outputs.sha_short }}
-
+            coycatz/phoenix-angular:sha-${{ github.sha }}
   deploy:
     needs: build-and-push
     runs-on: self-hosted
