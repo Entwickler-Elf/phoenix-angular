@@ -27,7 +27,7 @@ FROM docker.io/library/nginx:alpine
 # Copy the build output to Nginx's html directory
 # Note: The output path usually includes '/browser' with the new application builder.
 # If your build differs, check the dist/ folder structure.
-COPY --from=build /app/dist/phoenix-v1-angular/browser /usr/share/nginx/html
+COPY --from=build /app/dist/phoenix-angular/browser /usr/share/nginx/html
 
 # Copy custom Nginx configuration
 # Note: the file in the repo is named with a double .conf suffix
