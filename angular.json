@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "phoenix-v1-angular": {
+    "phoenix-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "phoenix-v1-angular:build:production"
+              "buildTarget": "phoenix-angular:build:production"
             },
             "development": {
-              "buildTarget": "phoenix-v1-angular:build:development"
+              "buildTarget": "phoenix-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
