@@ -90,12 +90,12 @@ jobs:
             -p 80:80 \
             ghcr.io/entwickler-elf/phoenix-angular:${{ env.IMAGE_TAG }}
 
-         sleep 5
-         if [ "$(docker inspect -f '{{.State.Running}}' phoenix-angular)" != "true" ]; then
-           echo "Container failed to start. Logs:"
-           docker logs phoenix-angular
-           exit 1
-         fi
+          sleep 5
+          if [ "$(docker inspect -f '{{.State.Running}}' phoenix-angular)" != "true" ]; then
+            echo "Container failed to start. Logs:"
+            docker logs phoenix-angular
+            exit 1
+          fi
 
       - name: Cleanup old images
         run: docker image prune -f
