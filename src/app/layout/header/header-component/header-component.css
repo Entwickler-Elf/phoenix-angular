@@ -1,0 +1,52 @@
+.app-header {
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2c3e50;
+  color: white;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 2px solid #3498db;
+}
+
+.logo-container {
+  display: flex;         /* Places logo and text side-by-side */
+  align-items: center;    /* Vertically centers the text with the logo */
+  gap: 12px;             /* Adds breathing room between logo and text */
+  cursor: pointer;
+  padding: 8px 0;/* Makes it feel interactive */
+  transition: transform 0.2s ease; /* Smooth hover effect */
+}
+
+.logo-container:hover {
+  transform: scale(1.02); /* Slight pop when hovering */
+}
+
+.logo-container span {
+  font-size: 1.25rem;    /* Makes the app name stand out */
+  font-weight: 700;      /* Bold for brand recognition */
+  letter-spacing: -0.5px; /* Modern typography touch */
+  color: #ffffff;        /* Ensures it is readable on dark headers */
+  white-space: nowrap;   /* Prevents the name from wrapping on small screens */
+  text-transform: uppercase; /* Optional: gives it a more formal "system" feel */
+}
+
+.phoenix-logo {
+  height: 40px;          /* Standard header logo height */
+  width: auto;           /* Maintains aspect ratio */
+  filter: drop-shadow(0 0 8px rgba(255, 69, 0, 0.3)); /* Subtle fire glow */
+}
