@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {EncounterDetailComponent} from './components/encounter-detail/encounter-detail.component';
-import {EncounterFormComponent} from './components/encounter-form/encounter-form.component';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-encounter',
   standalone: true,
-  imports: [RouterOutlet, EncounterDetailComponent, EncounterFormComponent], // Mandatory to allow sub-routes to render
+  imports: [RouterOutlet], // Mandatory to allow sub-routes to render
   templateUrl: './encounter.component.html',
   styleUrl: './encounter.component.css'
 })

@@ -1,5 +1,5 @@
 # Stage 1: Build the Angular application
-FROM node:alpine AS build
+FROM node:22-alpine AS build
 
 # Declare the arguments
 ARG API_URL
@@ -22,7 +22,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application with Nginx
-FROM docker.io/library/nginx:alpine
+FROM nginx:1.27-alpine
 
 # Copy the build output to Nginx's html directory
 # Note: The output path usually includes '/browser' with the new application builder.
