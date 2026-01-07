@@ -1,5 +1,5 @@
 import {provideRouter} from '@angular/router';
-import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection} from '@angular/core';
 import {includeBearerTokenInterceptor, provideKeycloak} from 'keycloak-angular';
 
 import {routes} from './app.routes';
@@ -7,10 +7,11 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZonelessChangeDetection(),
+    provideRouter(routes),
     provideHttpClient(
       withInterceptors([includeBearerTokenInterceptor])
     ),
-    provideBrowserGlobalErrorListeners(),
     provideKeycloak({
       config: {
         url: 'http://zeus:9090',
@@ -23,8 +24,7 @@ export const appConfig: ApplicationConfig = {
         redirectUri: `${window.location.origin}/encounters`
       },
     }),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideBrowserGlobalErrorListeners(),
 
   ]
 };
