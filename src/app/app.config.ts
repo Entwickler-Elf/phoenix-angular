@@ -1,20 +1,30 @@
-import { APP_INITIALIZER, ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { KeycloakService } from 'keycloak-angular';
+import {provideRouter} from '@angular/router';
+import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection} from '@angular/core';
+import {includeBearerTokenInterceptor, provideKeycloak} from 'keycloak-angular';
 
-import { routes } from './app.routes';
-import { initializeKeycloak } from './core/config/keycloak.init';
+import {routes} from './app.routes';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(
+      withInterceptors([includeBearerTokenInterceptor])
+    ),
     provideBrowserGlobalErrorListeners(),
+    provideKeycloak({
+      config: {
+        url: 'http://zeus:9090',
+        realm: 'phoenix-realm',
+        clientId: 'phoenix-angular'
+      },
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false,
+        redirectUri: `${window.location.origin}/encounters`
+      },
+    }),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    KeycloakService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    }
+
   ]
 };
