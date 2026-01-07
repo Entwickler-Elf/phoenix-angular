@@ -10,7 +10,9 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       },
       initOptions: {
         onLoad: 'login-required',
-        checkLoginIframe: false
+        checkLoginIframe: false,
+        // This ensures the user is sent to /encounters after login
+        redirectUri: window.location.origin + '/encounters'
       },
       enableBearerInterceptor: true,
       bearerPrefix: 'Bearer',
